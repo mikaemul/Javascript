@@ -1,91 +1,83 @@
 console.log('Hello console!');
-const max = 100;
-const min = 1;
-let randomNumber = Math.floor(Math.random() * (max - min) + min);
 
+const coursesEn = ["Hamburger, cream sauce and poiled potates",
+                "Goan style fish curry and whole grain rice",
+                "Vegan Chili sin carne and whole grain rice",
+                "Broccoli puree soup, side salad with two napas",
+                "Lunch baguette with BBQ-turkey filling",
+                "Cheese / Chicken / Vege / Halloum burger and french fries"];
+const coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa",
+                "Goalaista kalacurrya ja täysjyväriisiä",
+                "vegaani Chili sin carne ja täysjyväriisi",
+                "Parsakeittoa,lisäkesalaatti kahdella napaksella",
+                "Lunch baguette with BBQ-turkey filling",
+                "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
 
-const guesses = document.querySelector('.guesses');
-const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-const time = document.querySelector('.time');
-const guessCounter = document.querySelector('.guessCounter');
+const ravintolat1 = document.createElement('div');
+ravintolat1.setAttribute("id", "ravintolat1");
+const ravintolat = document.querySelector('.ravintolat');
+ravintolat.appendChild(ravintolat1);
 
-const guessSubmit = document.querySelector('.guessSubmit');
-const guessField = document.querySelector('.guessField');
+const changeLangButton1 = document.createElement('button');
+changeLangButton1.setAttribute('id', 'changeLanguage1');
+changeLangButton1.innerHTML = "Change the language of the menu to Fi.";
+document.body.appendChild(changeLangButton1);
 
-let guessCount = 1;
-let resetButton;
-let startTime = Date.now();
+const changeLangButton2 = document.createElement('button');
+changeLangButton2.setAttribute('id', 'changeLanguage2');
+changeLangButton2.innerHTML = "Change the language of the menu to En.";
+document.body.appendChild(changeLangButton2);
 
-const checkGuess = () => {
-  let userGuess = Number(guessField.value);
-  if(guessCount === 1){
-    guesses.textContent = 'Previous guesses: ';
+const sortMenu = document.createElement('button');
+sortMenu.setAttribute('id', 'sortMenu');
+sortMenu.innerHTML = "Sort menu";
+document.body.appendChild(sortMenu);
 
-  }
-  guesses.textContent +=userGuess + ' ';
+const randomDish = document.createElement('button');
+randomDish.setAttribute('id', 'randomDish');
+randomDish.innerHTML = "RandomDish";
+document.body.appendChild(randomDish);
 
-  if(userGuess === randomNumber){
-    let stopTime = Date.now();
-    let calculus = (stopTime - startTime)/1000;
-    lastResult.textContent = 'Congratulations! You got it right!';
-    lastResult.style.backgroundColor = 'green';
-    lowOrHi.textContent = '';
-    time.textContent = 'Took time to guess right: ' +  calculus + ' sec.';
-    guessCounter.textContent = 'It took you '  + guessCount +  ' tries.';
-    console.log(calculus);
-    console.log(startTime,stopTime);
-    setGameOver();
-  }else if(guessCount === 10){
-    lastResult.textContent = '!!!GAME OVER!!!';
-    setGameOver();
-  }else{
-    lastResult.textContent = 'Wrong!';
-    lastResult.style.backgroundColor = 'red';
-    if(userGuess < randomNumber){
-      lowOrHi.textContent = 'Last guess was too low!';
-    }else if(userGuess > randomNumber){
-      lowOrHi.textContent = 'Last guess wast too high!';
+const ul = document.createElement('ul');
+
+for(const courses of coursesEn){
+  const li = document.createElement('li');
+  ul.appendChild(li);
+  li.innerHTML +=courses;
+}
+document.getElementById('ravintolat1').appendChild(ul);
+
+const changeLanguageToFi = () => {
+  const languageSwap = document.getElementById('ravintolat1');
+    if(languageSwap.innerHTML = coursesEn){
+      languageSwap.innerHTML = coursesFi;
     }
-  }
+};
 
-  guessCount++;
-  guessField.value = '';
-  guessField.focus();
+const changeLanguageToEn = () => {
+  const languageSwap = document.getElementById('ravintolat1');
+    if(languageSwap.innerHTML = coursesFi){
+      languageSwap.innerHTML = coursesEn;
+    }
 
 };
 
-guessSubmit.addEventListener('click',checkGuess);
+changeLangButton1.addEventListener('click',changeLanguageToFi);
+changeLangButton2.addEventListener('click',changeLanguageToEn);
 
-const setGameOver = () => {
-  guessField.disabled = true;
-  guessSubmit.disabled = true;
-  resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game!';
-  document.body.appendChild(resetButton);
-  resetButton.addEventListener('click',resetGame);
+const sorting = () => {
+
+  coursesEn.sort();
+  coursesFi.sort();
+  document.getElementById('ravintolat1').innerHTML = coursesFi;
+  document.getElementById('ravintolat1').innerHTML = coursesEn;
+};
+sortMenu.addEventListener('click',sorting);
+
+const dish = coursesEn;
+const showAlert = () =>{
+  const randomCourse = dish[Math.floor(Math.random() * dish.length)];
+  alert(randomCourse);
 };
 
-const resetGame = () => {
- guessCount = 1;
- const resetParas = document.querySelectorAll('.resultParas p');
- for(let i = 0;i<resetParas.length; i++){
-   resetParas[i].textContent = '';
- }
-
- resetButton.parentNode.removeChild(resetButton);
-
- guessField.disabled = false;
- guessSubmit.disabled = false;
- guessField.value = '';
- guessField.focus();
-
- lastResult.style.backgroundColor = 'white';
-
- randomNumber = Math.floor(Math.random() * (max - min) + min);
-
-};
-
-
-
-
+randomDish.addEventListener('click',showAlert);

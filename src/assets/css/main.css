@@ -91,4 +91,24 @@ nav span{
     border-radius: 5%;
     border:1px dashed var(--main-bg-color);
     background-color: #fff2ad;
+    overflow: auto;
+}
+ button#changeLanguage1{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+button#changeLanguage2{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+#ravintolat1 ul li{
+  list-style-type: circle;
+}
+button#sortMenu{
+  margin-left: 20px;
+  margin-top:20px;
+}
+button#randomDish{
+  margin-left: 20px;
+  margin-top:20px;
 }
