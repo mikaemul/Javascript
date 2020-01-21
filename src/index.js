@@ -1,17 +1,9 @@
+import LunchMenu from '../src/assets/LunchMenu.json';
+// Test
+console.log('lunch menu object', LunchMenu);
 console.log('Hello console!');
 
-const coursesEn = ["Hamburger, cream sauce and poiled potates",
-                "Goan style fish curry and whole grain rice",
-                "Vegan Chili sin carne and whole grain rice",
-                "Broccoli puree soup, side salad with two napas",
-                "Lunch baguette with BBQ-turkey filling",
-                "Cheese / Chicken / Vege / Halloum burger and french fries"];
-const coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa",
-                "Goalaista kalacurrya ja täysjyväriisiä",
-                "vegaani Chili sin carne ja täysjyväriisi",
-                "Parsakeittoa,lisäkesalaatti kahdella napaksella",
-                "Lunch baguette with BBQ-turkey filling",
-                "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
+const lunchMenuJson = JSON.stringify(LunchMenu.courses);
 
 const ravintolat1 = document.createElement('div');
 ravintolat1.setAttribute("id", "ravintolat1");
@@ -33,18 +25,21 @@ sortMenu.setAttribute('id', 'sortMenu');
 sortMenu.innerHTML = "Sort menu";
 document.body.appendChild(sortMenu);
 
+
 const randomDish = document.createElement('button');
 randomDish.setAttribute('id', 'randomDish');
 randomDish.innerHTML = "RandomDish";
 document.body.appendChild(randomDish);
 
 const ul = document.createElement('ul');
+document.getElementById('ravintolat1').innerHTML = lunchMenuJson;
 
-for(const courses of coursesEn){
+/*for(const courses of LunchMenu){
   const li = document.createElement('li');
   ul.appendChild(li);
   li.innerHTML +=courses;
 }
+*/
 document.getElementById('ravintolat1').appendChild(ul);
 
 const changeLanguageToFi = () => {
@@ -74,10 +69,13 @@ const sorting = () => {
 };
 sortMenu.addEventListener('click',sorting);
 
-const dish = coursesEn;
+//const dish = coursesEn;
 const showAlert = () =>{
   const randomCourse = dish[Math.floor(Math.random() * dish.length)];
   alert(randomCourse);
 };
 
 randomDish.addEventListener('click',showAlert);
+
+
+
