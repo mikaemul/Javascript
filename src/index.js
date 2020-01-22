@@ -2,7 +2,7 @@ console.log('Hello console!');
 const max = 100;
 const min = 1;
 let randomNumber = Math.floor(Math.random() * (max - min) + min);
-
+console.log(randomNumber);
 
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
@@ -15,13 +15,13 @@ const guessField = document.querySelector('.guessField');
 
 let guessCount = 1;
 let resetButton;
-let startTime = Date.now();
+let startTime;
 
 const checkGuess = () => {
   let userGuess = Number(guessField.value);
   if(guessCount === 1){
     guesses.textContent = 'Previous guesses: ';
-
+    startTime = Date.now();
   }
   guesses.textContent +=userGuess + ' ';
 
