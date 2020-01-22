@@ -3,7 +3,19 @@ import LunchMenu from '../src/assets/LunchMenu.json';
 console.log('lunch menu object', LunchMenu);
 console.log('Hello console!');
 
-const lunchMenuJson = JSON.stringify(LunchMenu.courses);
+//const lunchMenuJson = JSON.stringify(LunchMenu.courses);
+const coursesFi = [];
+const coursesEn = [];
+let lang = 'fi';
+let menu = coursesFi;
+
+const coursesMenu = (LunchMenu) =>{
+  let courses = Object.values(LunchMenu);
+  for(const items of courses ){
+        coursesFi.push(items.title_fi);
+        coursesEn.push(items.title_en);
+  }
+};
 
 const ravintolat1 = document.createElement('div');
 ravintolat1.setAttribute("id", "ravintolat1");
