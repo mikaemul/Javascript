@@ -13,6 +13,11 @@ const coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä peruna
                 "Lunch baguette with BBQ-turkey filling",
                 "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
 
+
+let lang = 'fi';
+let menu = coursesFi;
+
+
 const ravintolat1 = document.createElement('div');
 ravintolat1.setAttribute("id", "ravintolat1");
 const ravintolat = document.querySelector('.ravintolat');
@@ -48,8 +53,10 @@ for(const courses of coursesEn){
 document.getElementById('ravintolat1').appendChild(ul);
 
 const changeLanguageToFi = () => {
+
   const languageSwap = document.getElementById('ravintolat1');
-    if(languageSwap.innerHTML = coursesEn){
+  languageSwap.innerHTML = "";
+  if(languageSwap.innerHTML = coursesEn){
       languageSwap.innerHTML = coursesFi;
     }
 };
@@ -81,3 +88,21 @@ const showAlert = () =>{
 };
 
 randomDish.addEventListener('click',showAlert);
+
+const sortingMenu = (courses, order = "acs") =>{
+  let menuSorting = courses.sort();
+  if(order = 'desc'){
+    menuSorting.reverse();
+  }
+  return menuSorting;
+};
+const changeLanguageToFi2 = () => {
+
+  const languageSwap = document.getElementById('ravintolat1');
+  languageSwap.innerHTML = "";
+  for(const courses of menu){
+    const li = document.createElement('li');
+    ul.appendChild(li);
+    li.innerHTML +=courses;
+  }
+};
