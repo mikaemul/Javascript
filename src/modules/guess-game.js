@@ -1,52 +1,8 @@
-import {startGame,checkGuess,resetGame} from './modules/guess-game';
-
-startGame();
-
-const testGamePlay = () => {
-  let guessCounter = 0;
-  let myGuess = 50;
-  let gameOver = false;
-  while(!gameOver){
-    let correctGuess = checkGuess(myGuess);
-    guessCounter++;
-    if(correctGuess === 0 ){
-      gameOver = true;
-      resetGame();
-    }else if(correctGuess < 0){
-      myGuess++;
-    }else{
-      myGuess--;
-    }
-  }
-  return guessCounter;
-};
-
-//testGamePlay();
-
-let guessCounts = [];
-for(let i=0;i < 1000;i++){
-  guessCounts.push(testGamePlay());
-};
-console.log('guessCounts',guessCounts);
-
-let maxGuessCount = Math.max(...guessCounts);
-let minGuessCount = Math.min(...guessCounts);
-console.log('maxGuessCount', maxGuessCount);
-console.log('minGuessCount', minGuessCount);
-
-
-let sum = 0;
-for(let i = 0; i < guessCounts.length; i++){
-  sum +=guessCounts[i];
-};
-let avg = sum/guessCounts.length;
-console.log('sum',sum);
-console.log('average',avg);
-
-//console.log('Hello console!');
-//const max = 100;
-//const min = 1;
-/*let randomNumber = Math.floor(Math.random() * (max - min) + min);
+console.log('Hello console!');
+const max = 100;
+const min = 1;
+const maxGuessCount = 100;
+let randomNumber = Math.floor(Math.random() * (max - min) + min);
 console.log(randomNumber);
 
 const guesses = document.querySelector('.guesses');
@@ -62,8 +18,17 @@ let guessCount = 1;
 let resetButton;
 let startTime;
 
-const checkGuess = () => {
-  let userGuess = Number(guessField.value);
+const checkGuess = (input) => {
+  //console.log('checkout input', input);
+  let userGuess;
+  // -1 too low, 0 correct, +1 too high
+  let guessDirection;
+  if(typeof input === 'object'){
+    userGuess = Number(guessField.value);
+  }else{
+    userGuess = input;
+  }
+
   if(guessCount === 1){
     guesses.textContent = 'Previous guesses: ';
     startTime = Date.now();
@@ -81,7 +46,8 @@ const checkGuess = () => {
     console.log(calculus);
     console.log(startTime,stopTime);
     setGameOver();
-  }else if(guessCount === 10){
+    return 0;
+  }else if(guessCount === maxGuessCount){
     lastResult.textContent = '!!!GAME OVER!!!';
     setGameOver();
   }else{
@@ -89,9 +55,12 @@ const checkGuess = () => {
     lastResult.style.backgroundColor = 'red';
     if(userGuess < randomNumber){
       lowOrHi.textContent = 'Last guess was too low!';
+      return -1;
     }else if(userGuess > randomNumber){
       lowOrHi.textContent = 'Last guess wast too high!';
+      return 1;
     }
+
   }
 
   guessCount++;
@@ -130,8 +99,12 @@ const resetGame = () => {
  randomNumber = Math.floor(Math.random() * (max - min) + min);
 
 };
-*/
 
+const startGame = () => {
+  guessSubmit.addEventListener('click', checkGuess);
+};
+
+export {startGame,checkGuess,resetGame};
 
 
 
