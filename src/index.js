@@ -25,13 +25,9 @@ ravintolat.appendChild(ravintolat1);
 
 const changeLangButton1 = document.createElement('button');
 changeLangButton1.setAttribute('id', 'changeLanguage1');
-changeLangButton1.innerHTML = "Change the language of the menu to Fi.";
+changeLangButton1.innerHTML = "Change the language of the menu.";
 document.body.appendChild(changeLangButton1);
 
-const changeLangButton2 = document.createElement('button');
-changeLangButton2.setAttribute('id', 'changeLanguage2');
-changeLangButton2.innerHTML = "Change the language of the menu to En.";
-document.body.appendChild(changeLangButton2);
 
 const sortMenu = document.createElement('button');
 sortMenu.setAttribute('id', 'sortMenu');
@@ -43,66 +39,72 @@ randomDish.setAttribute('id', 'randomDish');
 randomDish.innerHTML = "RandomDish";
 document.body.appendChild(randomDish);
 
-const ul = document.createElement('ul');
 
-for(const courses of coursesEn){
-  const li = document.createElement('li');
-  ul.appendChild(li);
-  li.innerHTML +=courses;
-}
-document.getElementById('ravintolat1').appendChild(ul);
-
-const changeLanguageToFi = () => {
-
-  const languageSwap = document.getElementById('ravintolat1');
-  languageSwap.innerHTML = "";
-  if(languageSwap.innerHTML = coursesEn){
-      languageSwap.innerHTML = coursesFi;
+const menuLanguage = (lang) => {
+  document.getElementById('ravintolat1').innerHTML = "";
+  const ul = document.createElement('ul');
+  if(lang === 'fi'){
+    for(const courses of coursesFi){
+      const li = document.createElement('li');
+      ul.appendChild(li);
+      li.innerHTML +=courses;
     }
-};
-
-const changeLanguageToEn = () => {
-  const languageSwap = document.getElementById('ravintolat1');
-    if(languageSwap.innerHTML = coursesFi){
-      languageSwap.innerHTML = coursesEn;
+  }else if(lang === 'en'){
+    for(const courses of coursesEn){
+      const li = document.createElement('li');
+      ul.appendChild(li);
+      li.innerHTML +=courses;
     }
+  }
+  document.getElementById('ravintolat1').appendChild(ul);
 
 };
+menuLanguage('en');
 
-changeLangButton1.addEventListener('click',changeLanguageToFi);
-changeLangButton2.addEventListener('click',changeLanguageToEn);
+const changeLanguage = () => {
+  const languageSwap = document.getElementById('ravintolat1');
+    if(lang === 'fi'){
+      lang='en';
+      menuLanguage('en');
+    }else if(lang === 'en'){
+      lang='fi';
+      menuLanguage('fi');
+    }
+
+};
+
+changeLangButton1.addEventListener('click',changeLanguage);
+
 
 const sorting = () => {
 
   coursesEn.sort();
   coursesFi.sort();
-  document.getElementById('ravintolat1').innerHTML = coursesFi;
-  document.getElementById('ravintolat1').innerHTML = coursesEn;
+  menuLanguage('fi');
+  menuLanguage('en');
 };
 sortMenu.addEventListener('click',sorting);
 
 const dish = coursesEn;
+const dish2 = coursesFi;
 const showAlert = () =>{
-  const randomCourse = dish[Math.floor(Math.random() * dish.length)];
-  alert(randomCourse);
+  if(lang==='en'){
+    const randomCourse = dish[Math.floor(Math.random() * dish.length)];
+    alert(randomCourse);
+  }else if(lang==='fi'){
+    randomCourse = dish2[Math.floor(Math.random() * dish2.length)];
+    alert(randomCourse);
+  }
 };
 
 randomDish.addEventListener('click',showAlert);
 
-const sortingMenu = (courses, order = "acs") =>{
+/*const sortingMenu = (courses, order = "acs") =>{
   let menuSorting = courses.sort();
   if(order = 'desc'){
     menuSorting.reverse();
   }
   return menuSorting;
 };
-const changeLanguageToFi2 = () => {
+*/
 
-  const languageSwap = document.getElementById('ravintolat1');
-  languageSwap.innerHTML = "";
-  for(const courses of menu){
-    const li = document.createElement('li');
-    ul.appendChild(li);
-    li.innerHTML +=courses;
-  }
-};
