@@ -69,7 +69,7 @@ menuLanguage('en');
 
 
 
-const changeLanguageToFi = () => {
+const changeLanguage = () => {
     if(lang === 'fi'){
       lang = 'en';
       menuLanguage('en');
@@ -88,7 +88,7 @@ const changeLanguageToFi = () => {
 };
 */
 
-changeLangButton1.addEventListener('click',changeLanguageToFi);
+changeLangButton1.addEventListener('click',changeLanguage);
 //changeLangButton2.addEventListener('click',changeLanguageToEn);
 
 const sorting = () => {
