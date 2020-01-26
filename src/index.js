@@ -1,6 +1,18 @@
-import {startGame,checkGuess,resetGame} from './modules/guess-game';
+//import {startGame,checkGuess,resetGame} from './modules/guess-game';
+import {nameMeal} from './modules/week2-task2';
+const input = "Mushroom and bean casserole";
+console.log('NameString',nameMeal(input));
 
-startGame();
+
+
+
+
+
+
+
+
+
+/*startGame();
 
 const testGamePlay = () => {
   let guessCounter = 0;
@@ -14,10 +26,16 @@ const testGamePlay = () => {
       resetGame();
     }else if(correctGuess < 0){
       myGuess++;
+
+
     }else{
       myGuess--;
+
+
     }
+
   }
+
   return guessCounter;
 };
 
@@ -42,6 +60,7 @@ for(let i = 0; i < guessCounts.length; i++){
 let avg = sum/guessCounts.length;
 console.log('sum',sum);
 console.log('average',avg);
+/*
 
 //console.log('Hello console!');
 //const max = 100;
