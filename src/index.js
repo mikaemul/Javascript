@@ -1,22 +1,10 @@
-import LunchMenu from './assets/LunchMenu.json';
-// Test
-console.log('lunch menu object', LunchMenu);
-console.log('Hello console!');
-
-//const lunchMenuJson = JSON.stringify(LunchMenu.courses);
-const coursesFi = [];
-const coursesEn = [];
-let lang = 'fi';
-let menu = coursesFi;
-const lunchMenu = Object.values(LunchMenu.courses);
-  for(let item of lunchMenu ){
-        coursesFi.push(item.title_fi);
-        coursesEn.push(item.title_en);
-  }
-  console.log(coursesFi);
-  console.log(coursesEn);
+import {showAlert,sorting,menuLanguage,changeLanguage} from './assets/modules/SodexoData';
+//import {showAlertFazer,sortingFazer,menuLanguageFazer,changeLanguageFazer} from './assets/modules/FazerData';
 
 
+
+
+//LunchMenu
 const ravintolat1 = document.createElement('div');
 ravintolat1.setAttribute("id", "ravintolat1");
 const ravintolat = document.querySelector('.ravintolat');
@@ -27,11 +15,78 @@ changeLangButton1.setAttribute('id', 'changeLanguage1');
 changeLangButton1.innerHTML = "Change the language of the menu.";
 document.body.appendChild(changeLangButton1);
 
-/*const changeLangButton2 = document.createElement('button');
+
+const sortMenu = document.createElement('button');
+sortMenu.setAttribute('id', 'sortMenu');
+sortMenu.innerHTML = "Sort menu";
+document.body.appendChild(sortMenu);
+
+
+const randomDish = document.createElement('button');
+randomDish.setAttribute('id', 'randomDish');
+randomDish.innerHTML = "RandomDish";
+document.body.appendChild(randomDish);
+
+menuLanguage('en');
+changeLangButton1.addEventListener('click',changeLanguage);
+sortMenu.addEventListener('click',sorting);
+randomDish.addEventListener('click',showAlert);
+
+//FazerMenu
+/*const ravintolat2 = document.createElement('div');
+ravintolat2.setAttribute("id", "ravintolat2");
+ravintolat[1].appendChild(ravintolat2);
+
+
+menuLanguageFazer('en');
+changeLangButton1.addEventListener('click',changeLanguageFazer);
+sortMenu.addEventListener('click',sortingFazer);
+randomDish.addEventListener('click',showAlertFazer);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Test
+console.log('lunch menu object', LunchMenu);
+console.log('Hello console!');
+/*
+const changeLangButton2 = document.createElement('button');
 changeLangButton2.setAttribute('id', 'changeLanguage2');
 changeLangButton2.innerHTML = "Change the language of the menu to En.";
-document.body.appendChild(changeLangButton2);
+document.body.appendChild(changeLangButton2)
 */
+
+//const lunchMenuJson = JSON.stringify(LunchMenu.courses);
+/*const coursesFi = [];
+const coursesEn = [];
+let lang = 'fi';const ravintolat1 = document.createElement('div');
+ravintolat1.setAttribute("id", "ravintolat1");
+const ravintolat = document.querySelector('.ravintolat');
+ravintolat.appendChild(ravintolat1);
+
+const changeLangButton1 = document.createElement('button');
+changeLangButton1.setAttribute('id', 'changeLanguage1');
+changeLangButton1.innerHTML = "Change the language of the menu.";
+document.body.appendChild(changeLangButton1);
+
+const changeLangButton2 = document.createElement('button');
+changeLangButton2.setAttribute('id', 'changeLanguage2');
+changeLangButton2.innerHTML = "Change the language of the menu to En.";
+document.body.appendChild(changeLangButton2)
+
 
 const sortMenu = document.createElement('button');
 sortMenu.setAttribute('id', 'sortMenu');
@@ -45,7 +100,19 @@ randomDish.innerHTML = "RandomDish";
 document.body.appendChild(randomDish);
 
 
+let menu = coursesFi;
+const lunchMenu = Object.values(LunchMenu.courses);
+  for(let item of lunchMenu ){
+        coursesFi.push(item.title_fi);
+        coursesEn.push(item.title_en);
+  }
+  console.log(coursesFi);
+  console.log(coursesEn);
+  */
 
+
+
+/*
 const menuLanguage = (lang) => {
   document.getElementById('ravintolat1').innerHTML = "";
   console.log(document.getElementById('ravintolat1'));
@@ -86,7 +153,7 @@ const changeLanguage = () => {
     }
 
 };
-*/
+
 
 changeLangButton1.addEventListener('click',changeLanguage);
 //changeLangButton2.addEventListener('click',changeLanguageToEn);
@@ -107,7 +174,7 @@ sortMenu.addEventListener('click',sorting);
   }
   return menuSorting;
 };
-*/
+
 
 const dish = coursesEn;
 const dish2 = coursesFi;
@@ -124,5 +191,4 @@ if(lang === 'en'){
 
 randomDish.addEventListener('click',showAlert);
 
-
-
+*/
