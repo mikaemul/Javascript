@@ -1,11 +1,124 @@
-import {showAlert,sorting,menuLanguage,changeLanguage} from './assets/modules/SodexoData';
+//import {showAlert,sorting,menuLanguage,changeLanguage} from './assets/modules/SodexoData';
 //import {showAlertFazer,sortingFazer,menuLanguageFazer,changeLanguageFazer} from './assets/modules/FazerData';
 //import SodexoData from './modules/SodexoData.js';
+
+//i
+const queue = () =>{
+  this.data = [];
+};
+queue.prototype.enqueue = (record) =>{
+  this.data.push(record);
+
+};
+ queue.prototype.dequeue = () =>{
+  return this.data.shift();
+};
+queue.prototype.peek = () => {
+  return this.data[0];
+};
+queue.prototype.lenght = () => {
+  return this.data[this.data.length - 1];
+};
+queue.prototype.size = () => {
+  return this.data.length;
+};
+
+const q = new queue();
+q.add('h');
+q.add('e');
+q.add('l');
+q.add('l');
+q.add('o');
+
+console.log(q);
+
+//ii
+const printMousePos = (event) =>{
+  console.log(
+  "clientX: " + event.clientX +
+  " - clientY: " + event.clientY);
+};
+document.addEventListener('click',printMousePos);
+
+//iii
+
+const touchEvent = () =>{
+  console.log('you touched the paragraph');
+};
+document.getElementById('touchEvent').addEventListener("touchstart",touchEvent);
+
+
+//iv
+setInterval(() => {
+  console.log('Hurry up');
+  //alert('Hurry Up!');
+}, 15000);
+
+let counter = 1;
+let timer = setInterval(() => {
+  console.log(`${counter++}. tick.`);
+  if (counter > 14) {
+    clearInterval(timer);
+  }
+}, 1000);
+
+//v
+
+
+const idling = () =>{
+  let idleTime;
+  window.onload = resetTimer;
+  document.onmousemove = resetTimer;
+  document.keypress = resetTimer;
+
+  const popUp = () =>{
+    alert("Hurry Up!!");
+    console.log('works');
+  };
+  const resetTimer = () => {
+    clearTimeout(idleTime);
+    idleTime = setTimeout(popUp,15000);
+  };
+};
+window.onload = () =>{
+  idling();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 //LunchMenu
-const ravintolat1 = document.createElement('div');
+/*const ravintolat1 = document.createElement('div');
 ravintolat1.setAttribute("id", "ravintolat1");
 const ravintolat = document.querySelector('.ravintolat');
 ravintolat.appendChild(ravintolat1);
@@ -59,10 +172,12 @@ randomDish.addEventListener('click',showAlertFazer);
 
 
 
+
 // Test
+/*
 console.log('lunch menu object', LunchMenu);
 console.log('Hello console!');
-/*
+
 const changeLangButton2 = document.createElement('button');
 changeLangButton2.setAttribute('id', 'changeLanguage2');
 changeLangButton2.innerHTML = "Change the language of the menu to En.";
