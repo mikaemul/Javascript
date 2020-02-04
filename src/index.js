@@ -1,11 +1,14 @@
 //import {startGame,checkGuess,resetGame} from './modules/guess-game';
-import {nameMeal,sortTheMenu,filtered,addedPercentage,sum} from './modules/week2-task2';
+import {nameMeal,sortTheMenu,filtered,addedPercentage,sum,vegeMeals} from './modules/week2-task2';
 const input = "Mushroom and bean casserole";
 console.log('NameString',nameMeal(input));
 console.log('sorted menu',sortTheMenu);
 console.log('filtered menu',filtered);
 console.log('calcutions',addedPercentage);
 console.log('menu.price sum', sum);
+
+console.log('vege meals with filter', vegeMeals);
+console.log('vege meals', vegeMeals);
 
 
 

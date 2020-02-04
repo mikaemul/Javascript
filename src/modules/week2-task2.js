@@ -23,4 +23,25 @@ const addedPercentage = menu.map(item => item.price * (1 + 0.15));
 let initialValue = 0;
 let sum = menu.reduce((acc,current) => acc + current.price,initialValue);
 
-export {nameMeal,sortTheMenu,filtered,addedPercentage,sum};
+//b
+
+import FazerMenu from '../assets/fazer.json';
+// console.log(FazerMenu.LunchMenus[1].SetMenus);
+let vegeMeals = [];
+for (const setMenu of FazerMenu.LunchMenus[1].SetMenus) {
+  for (const meal of setMenu.Meals) {
+    if (meal.Diets.includes('Veg')) {
+      vegeMeals.push(meal.Name);
+    }
+  }
+}
+
+// preserve some structure with .filter()
+vegeMeals = [];
+for (const setMenu of FazerMenu.LunchMenus[1].SetMenus) {
+  vegeMeals.push(setMenu.Meals.filter(meal => meal.Diets.includes('Veg')));
+}
+
+
+
+export {nameMeal,sortTheMenu,filtered,addedPercentage,sum,vegeMeals};
