@@ -1,4 +1,5 @@
 import LunchMenu from '../LunchMenu.json';
+//import {getParsedMenuFazer} from './modules/fazer-data';
 //const lunchMenuJson = JSON.stringify(LunchMenu.courses);
 const coursesFi = [];
 const coursesEn = [];
@@ -12,7 +13,18 @@ const lunchMenu = Object.values(LunchMenu.courses);
   console.log(coursesFi);
   console.log(coursesEn);
 
+ /* const parseSodexoMenu = (sodexoDailyMenu) => {
+    const courses = Object.values(sodexoDailyMenu);
+    for (const course of courses) {
+      coursesFi.push(course.category + ": " +  course.title_fi);
+      coursesEn.push(course.title_en);
+    }
+  };
+  parseSodexoMenu(LunchMenu.courses);
+  const SodexoData = {coursesEn, coursesFi};
+export default SodexoData;
 
+  */
 
 
 
